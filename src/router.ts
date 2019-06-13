@@ -6,10 +6,28 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
+
     {
       path: '/',
+      redirect: to => {
+        return "/recommend"
+      },
       name: 'home',
       component: Home,
+      children:[
+        {
+          path:'recommend',
+          component: () => import('./views/home/Recommend.vue')
+        },
+        {
+          path:'range',
+          component: () => import('./views/home/Range.vue')
+        },
+        {
+          path:'search',
+          component: () => import('./views/home/Search.vue')
+        }
+      ]
     },
     {
       path: '/about',
