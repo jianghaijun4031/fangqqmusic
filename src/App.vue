@@ -5,6 +5,7 @@
 </template>
 
 <style lang="less">
+@import "./assets/icon.less";
 #app{
   background: #f4f4f4;
 

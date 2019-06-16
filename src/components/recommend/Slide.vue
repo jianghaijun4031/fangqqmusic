@@ -1,32 +1,19 @@
 <template>
-    <div>
-        <Slide/>
-        <RadioStation />
-        <PopularMusic />
-        <Footer />
-        <FootFix />
-    </div>
+    <cube-slide class="slidevi" ref="slide" :data="sliderItem">
+        <cube-slide-item v-for="(item, index) in sliderItem" :key="index" @click.native="clickHandler(item, index)">
+            <a :href="item.linkUrl">
+                <img :src="item.picUrl">
+            </a>
+        </cube-slide-item>
+    </cube-slide>
 </template>
 
 <script>
-    import Slide from "@/components/recommend/Slide.vue"
-    import RadioStation from "@/components/recommend/RadioStation.vue"
-    import PopularMusic from "@/components/recommend/PopularMusic.vue";
-    import Footer from "@/components/recommend/Footer";
-    import FootFix from "@/components/recommend/FootFix";
-
     export default {
-        name: "Recommend",
-        components:{
-            Slide,
-            RadioStation,
-            PopularMusic,
-            Footer,
-            FootFix
-        },
-        data() {
+        name: "Slide",
+        data (){
             return {
-                slider: [
+                sliderItem: [
                     {
                         "linkUrl": "https://y.qq.com/m/digitalbum/gold/index.html?openinqqmusic=1&_video=true&mid=004M8HLn4QOyyn&g_f=shoujijiaodian",
                         "picUrl": "http://y.gtimg.cn/music/common/upload/MUSIC_FOCUS/1379062.jpg",
@@ -54,10 +41,18 @@
                     }
                 ]
             }
+        },
+        methods:{
+            clickHandler (val,index){
+
+            }
         }
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+    .slidevi{
+        width: 100%;
+        height: 150px;
+    }
 </style>
